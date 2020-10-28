@@ -24,7 +24,8 @@
 define_subcat <- function(subcat_name,  ...){
 
   rules_list <- list(...)
-  rules_names <- sapply(match.call(expand.dots = FALSE)$..., deparse)
+  rules_names <- vapply(match.call(expand.dots = FALSE)$...,
+                        deparse, FUN.VALUE = 'vector')
 
   for (i in seq_along( rules_list)){
     if (!identical(class( rules_list[[i]]), "rule")){

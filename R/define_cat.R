@@ -58,8 +58,8 @@
 define_cat <- function(cat_name, cat_colour, ...){
 
   object_list <- list(...)
-  object_names <- sapply(match.call(expand.dots = FALSE)$..., deparse)
-
+  object_names <- vapply(match.call(expand.dots = FALSE)$..., deparse, FUN.VALUE = 'vector')
+  
   # Checking the categories of the objects -------------------------------------
   number_of_subcats <- 0
   number_of_rules <- 0

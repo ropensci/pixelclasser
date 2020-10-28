@@ -69,7 +69,8 @@ classify_pixels <- function(image_prop, ..., unclassed_colour = "black",
   # Checking the categories of the objects -------------------------------------
   cats_list <- list(...)
   num_cats <- length(cats_list)
-  cats_names <- sapply(match.call(expand.dots = FALSE)$..., deparse)
+  cats_names <- vapply(match.call(expand.dots = FALSE)$...,
+                       deparse, FUN.VALUE = 'vector')
 
   for (i in 1:num_cats){
     if (!identical(class(cats_list[[i]]), "pixel_cat")){
