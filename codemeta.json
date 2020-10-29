@@ -1,0 +1,131 @@
+{
+  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@type": "SoftwareSourceCode",
+  "identifier": "pixelclasser",
+  "description": "Contains functions to classify the pixels of an image file\n    (jpeg or tiff) by its colour. It implements a simple form of the techniques \n    known as Support Vector Machine adapted to this particular problem.",
+  "name": "pixelclasser: A Package for Classifying Pixels by Colour",
+  "codeRepository": "https://github.com/CarlosRealR/pixelclasser",
+  "issueTracker": "https://github.com/CarlosRealR/pixelclasser",
+  "license": "https://spdx.org/licenses/GPL-3.0",
+  "version": "0.5.0",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.6.3 (2020-02-29)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Carlos",
+      "familyName": "Real",
+      "email": "carlos.real@usc.es",
+      "@id": "https://orcid.org/0000-0002-5433-6728"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Carlos",
+      "familyName": "Real",
+      "email": "carlos.real@usc.es",
+      "@id": "https://orcid.org/0000-0002-5433-6728"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "graphics",
+      "name": "graphics"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "grDevices",
+      "name": "grDevices"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "jpeg",
+      "name": "jpeg",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=jpeg"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "tiff",
+      "name": "tiff",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=tiff"
+    }
+  ],
+  "readme": "https://github.com/CarlosRealR/pixelclasser/blob/main/README.Rmd",
+  "fileSize": "1257.444KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Carlos",
+          "familyName": "Real",
+          "email": "carlos.real@usc.es",
+          "@id": "https://orcid.org/0000-0002-5433-6728"
+        }
+      ],
+      "name": "pixelclasser: A Package for Classifying Pixels by Colour",
+      "url": "https://github.com/CarlosRealR/pixelclasser",
+      "description": "R package version 0.5.0"
+    }
+  ]
+}
