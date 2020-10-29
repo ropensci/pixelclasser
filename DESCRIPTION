@@ -2,8 +2,8 @@ Package: pixelclasser
 Type: Package
 Title: A Package for Classifying Pixels by Colour
 Version: 0.5.0
-Author: Carlos Real
-Maintainer: Carlos Real <carlos.real@usc.es>
+Authors@R: person("Carlos", "Real", email = "carlos.real@usc.es",  role = c("aut", "cre"),
+comment = c(ORCID = "0000-0002-5433-6728"))
 Description: Contains functions to classify the pixels of an image file
     (jpeg or tiff) by its colour. It implements a simple form of the techniques 
     known as Support Vector Machine adapted to this particular problem.
