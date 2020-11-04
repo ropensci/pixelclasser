@@ -41,8 +41,10 @@ Installation
 You can install the development version from GitHub using `remotes` or
 `devtools`
 
-    remotes::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
-    devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
+``` r
+remotes::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
+devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
+```
 
 Using pixelclasser
 ------------------
@@ -50,14 +52,38 @@ Using pixelclasser
 The workflow and how to use the functions is explained in the vignette
 included in the package:
 
-    vignette("pixelclasser")
+``` r
+vignette("pixelclasser")
+```
 
 The vignette explains how to use the code and illustrates the procedure
-outlined above using a set of images included as package data.
+outlined above using a set of images included as package data. This is a
+summary of the vignette contents. The following image is the example
+used in the vignette: dead, ivy and oak leaves on the soil in the campus
+gardens. The small images are representative of each category.
 
 <img src="./inst/extdata/ExampleImages.png" width="50%" style="display: block; margin: auto;" />
 
-The following figure shows the original image and the results of the two
-classifications.
+This image shows the pixels of the original image (black) and, overlaid,
+those of the small images: dead (brown), ivy (blue) and oak leaves
+(green). They were plotted using the values of the *g* and *r* colour
+variables (the example was an RGB digital image).
+
+<img src="./inst/extdata/ReadMeFig01.png" width="50%" style="display: block; margin: auto;" />
+
+The user defines straight lines that serve as borders of the area
+occupied by each pixel category. The figure shows line *L*<sub>1</sub>
+which separate the dead leaf pixels from the others, and lines
+*L*<sub>2</sub> and *L*<sub>3</sub> which separate the ivy from the oak
+pixels. Each line defines two rules (pixels above or underneath the
+line). They were defined using the oak pixels but note that ivy pixels
+trespass into the oak area, so they were not totally separable.
+
+<img src="./inst/extdata/ReadMeFig02.png" width="50%" style="display: block; margin: auto;" />
+
+Using the mathematical expressions of the rules, the pixels were
+classified as belonging or not to each category and classified images
+produced. Below are the original image, the image classified using
+$L\_{1} alone (dead/fresh leaves) and the full classified image.
 
 <img src="./inst/extdata/ClassifResults.png" width="100%" style="display: block; margin: auto;" />
