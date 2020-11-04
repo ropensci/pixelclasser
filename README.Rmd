@@ -1,7 +1,10 @@
-pixelclasser
-
 ---
-output: github_document
+title: pixelclasser
+author: Carlos Real
+date: November 4, 2020
+output:
+  md_document:
+    variant: markdown_github
 ---
 
 ```{r, include = FALSE}
@@ -42,4 +45,26 @@ The workflow and how to use the functions is explained in the vignette included 
 vignette("pixelclasser")
 ```
 
-The vignette explains how to use the code and illustrates the procedure outlined above using a set of images included as package data.
+The vignette explains how to use the code and illustrates the procedure outlined above using a set of images included as package data. This is a summary of the vignette contents. The following image is the example used in the vignette: dead, ivy and oak leaves on the soil in the campus gardens. The small images are representative of each category.
+
+```{r echo=FALSE, fig.align='center', out.width = "50%"}
+knitr::include_graphics('./inst/extdata/ExampleImages.png')
+```
+
+This image shows the pixels of the original image (black) and, overlaid, those of the small images: dead (brown), ivy (blue) and oak leaves (green). They were plotted using the values of the $g$ and $r$ colour variables (the example was an RGB digital image).    
+
+```{r echo=FALSE, fig.align='center', out.width = "50%"}
+knitr::include_graphics('./inst/extdata/ReadMeFig01.png')
+```
+
+The user defines straight lines that serve as borders of the area occupied by each pixel category. The figure shows line $L_{1}$ which separate the dead leaf pixels from the others, and lines $L_{2}$ and $L_{3}$ which separate the ivy from the oak pixels. Each line defines two rules (pixels above or underneath the line). They were defined using the oak pixels but note that ivy pixels trespass into the oak area, so they were not totally separable.
+
+```{r echo=FALSE, fig.align='center', out.width = "50%"}
+knitr::include_graphics('./inst/extdata/ReadMeFig02.png')
+```
+
+Using the mathematical expressions of the rules, the pixels were classified as belonging or not to each category and classified images produced. Below are the original image, the image classified using $L_{1} alone (dead/fresh leaves) and the full classified image.
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics('./inst/extdata/ClassifResults.png')
+```
