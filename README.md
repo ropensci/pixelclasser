@@ -6,6 +6,8 @@ pixelclasser
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+[![](https://badges.ropensci.org/406_status.svg)](https://github.com/ropensci/software-review/issues/406)
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
@@ -23,7 +25,7 @@ more convenient by trial and error) and, hopefully, they would form
 separate clusters (pixel categories). The user then traces straight
 lines (classification rules) that enclose the pixel clusters. Using the
 mathematical expression for these rules and the values of the
-transformed variables, each pixel can be tested for pertenence to each
+transformed variables, each pixel can be tested for belonging in each
 category. This produces a set of logical matrices (incidence matrices)
 indicating which pixels belong to each category, stored in appropriate R
 objects. These can be submitted to posterior analysis or used to create

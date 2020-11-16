@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 
 This package contains a set of tools to classify the pixels of digital images into colour categories arbitrarily defined by the user. It contains functions to visualize the distribution of the pixel colours in the images, to define classification rules, to classify the pixels and to store this information in R objects, and to save these as image files. It is a simple version of the multivariate technique known as Support Vector Machine, adapted to this particular use.
 
-The procedure is simple. A digital image in JPEG or TIFF format is imported into R. The original image contains three colour variables (or bands): *R*, *G*, and *B*. The first step is to transform them into proportions (*r*, *g* and *b*), which simplifies the problem into a bivariate one (as *r + g + b* = 1 one variable is redundant). Moreover, the transformation eliminates colour variations due to differences in illumination. The pixels of the image can then be plotted in the plane defined by two of the variables (the user can select them arbitrarily) and, hopefully, they would form separate clusters (pixel categories). The user then traces straight lines (classification rules) that enclose the pixel clusters. Using the mathematical expression for these rules and the *rgb* values, each pixel can be tested for pertenence to each category.  This produces a set of logical matrices (incidence matrices) indicating which pixels belong to each category. These can be submitted to posterior analysis or used to create a new version of the original image showing the category of each pixel.
+The procedure is simple. A digital image in JPEG or TIFF format is imported into R. The original image contains three colour variables (or bands): *R*, *G*, and *B*. The first step is to transform them into proportions (*r*, *g* and *b*), which simplifies the problem into a bivariate one (as *r + g + b* = 1 one variable is redundant). Moreover, the transformation eliminates colour variations due to differences in illumination. The pixels of the image can then be plotted in the plane defined by two of the variables (the user can select them arbitrarily) and, hopefully, they would form separate clusters (pixel categories). The user then traces straight lines (classification rules) that enclose the pixel clusters. Using the mathematical expression for these rules and the *rgb* values, each pixel can be tested for membership in each category.  This produces a set of logical matrices (incidence matrices) indicating which pixels belong to each category. These can be submitted to posterior analysis or used to create a new version of the original image showing the category of each pixel.
 
 For example, consider the generic line *y = ax + c*, where *y* and *x* are the colour variables selected to plot the data (say *r* and *g*), and *a* and *c* the slope and the intercept of the line, as usual. If substituting the *x* value of a pixel in the equation produces a value larger than its *y* value, the pixel is under the line, and over it otherwise. Therefore the equation of a rule is the same of a straight line, but expressed as an inequality, i.e. with *=* substituted by  one of the relational operators $<, \leq, >, \geq$. Applying this test to each pixel and recording the results as 1/0, an incidence matrix for that rule is constructed.
 
@@ -73,7 +73,7 @@ blue <- "#5536ffff"
 green <- "#559800ff"
 ```
 
-The next step is to visualize the distribution of the pixels in *rgb* space, but only two variables are needed. Any pair of variables would do, but a particular combination migth produce a better display of the clusters. It is a matter of try the three possible combinations to select the most convenient.
+The next step is to visualize the distribution of the pixels in *rgb* space, but only two variables are needed. Any pair of variables would do, but a particular combination might produce a better display of the clusters. It is a matter of try the three possible combinations to select the most convenient.
 
 Plotting the pixels is a two-step procedure: a void plot is drawn first and then the pixels are added to the plot (the use of a transparent black colour, `#00000008`, creates a "density plot" effect):
   
@@ -82,14 +82,14 @@ plot_rgb_plane("r", "b", main = "Image: ivy and oak")
 plot_pixels(ivy_oak_rgb, "r", "b", col = transparent_black)
 ```
 
-The coloured lines are an aid to interpret the graph: no pixels could be found outside the blue lines, and the red lines converging in the barycenter of the triangle *(r, g, b)* = (1/3, 1/3, 1/3), define the areas where a colour is dominant. Note that graphical parameters (`main` in this example) can be passed to the function to change the final appearance of the graph. All the auxiliary lines can be deleted, as in the following example, which uses different colour variables to create the graph.
+The coloured lines are an aid to interpret the graph: no pixels could be found outside the blue lines, and the red lines converging in the barycentre of the triangle *(r, g, b)* = (1/3, 1/3, 1/3), define the areas where a colour is dominant. Note that graphical parameters (`main` in this example) can be passed to the function to change the final appearance of the graph. All the auxiliary lines can be deleted, as in the following example, which uses different colour variables to create the graph.
 
 ```{r, fig.align="center", out.width = "50%"}
 plot_rgb_plane("r", "g", plot_limits = F, plot_guides = F, plot_grid = F)
 plot_pixels(ivy_oak_rgb, "r", "g", col = transparent_black)
 ```
 
-There are two clear pixel clusters and a small, but noticeable, quantity of pixels in between. Also visible are linear patterns that are artifacts created because the *RGB* data are discrete variables (eight bit in the most common cases). These are more appreciable in the following graphs, which are restricted to the area occupied by the pixels. In the following examples *g* and *b* will be used as variables *x* and *y* for plotting and pixel classification. 
+There are two clear pixel clusters and a small, but noticeable, quantity of pixels in between. Also visible are linear patterns that are artefacts created because the *RGB* data are discrete variables (eight bit in the most common cases). These are more appreciable in the following graphs, which are restricted to the area occupied by the pixels. In the following examples *g* and *b* will be used as variables *x* and *y* for plotting and pixel classification. 
 
 ## Adding the pixels of the test images ##
 
@@ -118,7 +118,7 @@ rule_01 <- define_rule("rule_01", "g", "b", c(0.345, 1/3), c(0.40, 0.10), compar
 rule_02 <- define_rule("rule_02", "g", "b", c(0.345, 1/3), c(0.40, 0.10), comparator = ">=")
 ```
 
-The rule objects store the values passed as parameters, the parameters of the equation of the line (*a* and *c*), and a textual representation of the equation to be evaluated by the classification function. To check the correctedness of the rules, the line can be added to the plot:
+The rule objects store the values passed as parameters, the parameters of the equation of the line (*a* and *c*), and a textual representation of the equation to be evaluated by the classification function. To check the correctness of the rules, the line can be added to the plot:
   
 ```{r, fig.align="center", out.width = "50%"}
 plot_rgb_plane("g", "b", xlim = c(0.2, 0.6), ylim = c(0.1, 0.33))
@@ -169,7 +169,7 @@ rule_06 <- define_rule("rule_06", "g", "b", c(0.35, 0.25), c(0.5, 0.25), compara
 
 Therefore, three lines and six rules are needed to classify the pixels of the image.
 
-Note that because no points can be found outside the blue triangle, its borders are implicit rules that close the poligons defined by the explicit rules, but that do not need to be created.
+Note that because no points can be found outside the blue triangle, its borders are implicit rules that close the polygons defined by the explicit rules, but that do not need to be created.
 
 ## Creating the classifier objects ##
 
