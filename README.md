@@ -86,6 +86,6 @@ trespass into the oak area, so they were not totally separable.
 Using the mathematical expressions of the rules, the pixels were
 classified as belonging or not to each category and classified images
 produced. Below are the original image, the image classified using
-$L\_{1} alone (dead/fresh leaves) and the full classified image.
+$L\_{1}$ alone (dead/fresh leaves) and the full classified image.
 
 <img src="./inst/extdata/ClassifResults.png" width="100%" style="display: block; margin: auto;" />

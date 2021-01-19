@@ -7,7 +7,8 @@
 #' @param image_rgb an object produced by \code{transform_colours()}.
 #' @param x_axis a character string indicating which colour variable use as x.
 #' @param y_axis a character string indicating which colour variable use as y.
-#' @param col a character string defining the colour to plot the pixels.
+#' @param \dots additional graphical parameters, mainly to set the colour (col=)
+#' for plotting the points.
 #'
 #' @return The function does not return any value.
 #'
@@ -17,10 +18,16 @@
 #'   Note that a colour without specific transparency information defaults to an
 #'   opaque colour, so \code{"#000000"} is the same as \code{"#000000ff"}. The
 #'   colours must be specified in any form understandable by function
-#'   \code{col2rgb}
+#'   \code{col2rgb}. Note also that the points are plotted using pch = ".", as 
+#'   any other symbol would clutter the graph.
 #'
 #'   Caution: The colour variables passed in \code{x_axis} and \code{y_axis}
 #'   must be the same that were used to plot the plane.
+#'   
+#'   Warning: plotting several million points in an R graph is an slow process. 
+#'   Be patient or reduce the size of the images to the smallest possible.
+#'   Having a nice smartphone with a petapixel camera sensor is good for
+#'   artistic purposes, but not always for efficient scientific work.
 #'
 #' @seealso \code{\link{plot_rgb_plane}}, \code{\link[grDevices]{col2rgb}}
 #'
@@ -36,7 +43,7 @@
 #'
 #' @export
 
-plot_pixels <- function(image_rgb, x_axis, y_axis, col = "black"){
+plot_pixels <- function(image_rgb, x_axis, y_axis, ...){
 
   if (!identical(class(image_rgb), "transformed_image")){
     stop("The image object to plot,", image_rgb,
@@ -44,6 +51,6 @@ plot_pixels <- function(image_rgb, x_axis, y_axis, col = "black"){
          call. = FALSE)
   } else {
     graphics::points(image_rgb[,, x_axis], image_rgb[,, y_axis],
-                     pch = ".", col = col)
+                     pch = ".", ... = ...)
   }
 }

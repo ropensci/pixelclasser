@@ -4,7 +4,7 @@
 \alias{plot_pixels}
 \title{Plot the pixels of a transformed image}
 \usage{
-plot_pixels(image_rgb, x_axis, y_axis, col = "black")
+plot_pixels(image_rgb, x_axis, y_axis, ...)
 }
 \arguments{
 \item{image_rgb}{an object produced by \code{transform_colours()}.}
@@ -13,7 +13,8 @@ plot_pixels(image_rgb, x_axis, y_axis, col = "black")
 
 \item{y_axis}{a character string indicating which colour variable use as y.}
 
-\item{col}{a character string defining the colour to plot the pixels.}
+\item{\dots}{additional graphical parameters, mainly to set the colour (col=)
+for plotting the points.}
 }
 \value{
 The function does not return any value.
@@ -30,10 +31,16 @@ It is advantageous to specify a colour such as \code{"#00000005"}
   Note that a colour without specific transparency information defaults to an
   opaque colour, so \code{"#000000"} is the same as \code{"#000000ff"}. The
   colours must be specified in any form understandable by function
-  \code{col2rgb}
+  \code{col2rgb}. Note also that the points are plotted using pch = ".", as 
+  any other symbol would clutter the graph.
 
   Caution: The colour variables passed in \code{x_axis} and \code{y_axis}
   must be the same that were used to plot the plane.
+  
+  Warning: plotting several million points in an R graph is an slow process. 
+  Be patient or reduce the size of the images to the smallest possible.
+  Having a nice smartphone with a petapixel camera sensor is good for
+  artistic purposes, but not always for efficient scientific work.
 }
 \examples{
 \dontrun{

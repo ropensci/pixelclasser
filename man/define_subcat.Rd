@@ -9,7 +9,7 @@ define_subcat(subcat_name, ...)
 \arguments{
 \item{subcat_name}{a character string containing the name of the subcategory.}
 
-\item{\dots}{a list of objects of class \code{rule}.}
+\item{\dots}{a list of objects of class \code{pixel_rule}.}
 }
 \value{
 An object of class \code{pixel_subcat}, which is a list with the
@@ -19,13 +19,15 @@ An object of class \code{pixel_subcat}, which is a list with the
 }
 \description{
 Creates a list of class \code{pixel_subcat} object from a list of objects of
-class \code{rule}.
+class \code{pixel_rule}.
 }
 \examples{
-rule01 <- define_rule("R01", "g", "b", c(0.35, 0.30), c(0.45, 0.10), ">=")
-rule02 <- define_rule("R02", "g", "b", c(0.35, 0.253), c(0.45, 0.253), ">=")
+rule01 <- define_rule("R01", "g", "b",
+                      list(c(0.35, 0.30), c(0.45, 0.10)), ">=")
+rule02 <- define_rule("R02", "g", "b",
+                      list(c(0.35, 0.253), c(0.45, 0.253)), ">=")
 
-subcl01 <- define_subcat("subcl01", rule01, rule02)
+subcat01 <- define_subcat("subcat01", rule01, rule02)
 
 }
 \seealso{

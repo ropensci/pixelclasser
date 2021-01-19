@@ -43,8 +43,7 @@ read_image <- function(file_name){
         c("tif", "TIF", "tiff", "TIFF")){
       result <- tiff::readTIFF(file_name)
     } else {
-      stop("The extension of ", file_name, " is not jpg, tif or equivalent. 
-           Is it an image file?")
+      stop("The extension of ", file_name, " is not jpg, tif or equivalent")
     }
   }
 

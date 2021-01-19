@@ -12,9 +12,9 @@ define_cat(cat_name, cat_colour, ...)
 \item{cat_colour}{a character string defining the colour to paint the pixels
 with when creating a classified picture.}
 
-\item{\dots}{a list of \code{pixel_subcat} objects, or of \code{rule} objects
-in case that subcategories are not needed. A mixed list of rule and
-pixel_subcat objects is not allowed.}
+\item{\dots}{a list of \code{pixel_subcat} objects, or \code{pixel_rule}
+objects in case that subcategories are not needed. A mixed list of
+\code{pixel_rule} and \code{pixel_subcat} objects is not allowed.}
 }
 \value{
 A list of class \code{pixel_cat} with the following elements:
@@ -41,25 +41,29 @@ The function needs a list of objects of class \code{pixel_subcat}
   cases.
 
   Note that the list of objects passed to the function must be either of
-  class \code{rule} or \code{pixel_subcat}, but not a mixture. In this case
-  the function terminates with an error message.
+  class \code{pixel_rule} or \code{pixel_subcat}, but not a mixture. In this
+  case the function terminates with an error message.
 
   The colours must be specified in a way that can be translated into RGB
   format by function \code{col2rgb()}.
 }
 \examples{
 # The rules are not consistent, they are only useful as examples
-rule01 <- define_rule("R01", "g", "b", c(0.35, 0.30), c(0.45, 0.10), ">=")
-rule02 <- define_rule("R02", "g", "b", c(0.35, 0.253), c(0.45, 0.253), ">=")
-rule03 <- define_rule("R03", "g", "b", c(0.35, 0.29), c(0.49, 0.178), ">=")
-rule04 <- define_rule("R04", "g", "b", c(0.35, 0.253), c(0.45, 0.253), "<")
+rule01 <- define_rule("R01", "g", "b",
+                      list(c(0.35, 0.30), c(0.45, 0.10)), ">=")
+rule02 <- define_rule("R02", "g", "b",
+                      list(c(0.35, 0.253), c(0.45, 0.253)), ">=")
+rule03 <- define_rule("R03", "g", "b",
+                      list(c(0.35, 0.29), c(0.49, 0.178)), ">=")
+rule04 <- define_rule("R04", "g", "b",
+                      list(c(0.35, 0.253), c(0.45, 0.253)), "<")
 
 subcat01 <- define_subcat("Subcat01", rule01, rule02)
 subcat02 <- define_subcat("Subcat02", rule03, rule04)
 
 cat01 <- define_cat("Cat01", "#ffae2a", subcat01, subcat02)
 
-# A single category defined by a set of rules, not subclasses
+# A single category defined by a set of rules, not subcategories
 cat02 <- define_cat("Cat02", "#00ae2a", rule01, rule02, rule03)
 
 }

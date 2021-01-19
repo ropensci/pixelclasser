@@ -54,7 +54,7 @@ save_classif_image <- function(classified_image, file_name, ...){
 
   image_array <- array(dim = c(dim(classified_image[[1]]$incid_mat), 3), data=0)
   for (band in bands){
-    for (pixel_cat in seq_along(classified_image)){
+    for (pixel_cat in (1:(length(classified_image) - 1))){
       image_array[,, band] <- image_array[,, band] +
                               classified_image[[pixel_cat]]$incid_mat * 
                               classified_image[[pixel_cat]]$colour[band, 1]

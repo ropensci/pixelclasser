@@ -3,3 +3,5 @@
 LICENSE.txt
 README.Rmd
 ^codemeta\.json$
+^doc$
+^Meta$

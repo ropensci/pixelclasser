@@ -5,9 +5,8 @@ library(pixelclasser)
 
 test_that("Parameters in read_image() are verified", {
 
-  expect_error(read_image(system.file("extdata", "ExampleImages.png",
-                                      package = "pixelclasser")))
-
+  expect_error(read_image("ExampleImages.png"),
+             "The extension of ExampleImages.png is not jpg, tif or equivalent")
 })
 
 test_that("Output of read_image() is correct", {
@@ -24,33 +23,39 @@ test_that("Output of read_image() is correct", {
 
 test_that("Parameters in define_rule() are verified", {
 
-  expect_error(define_rule('R1', 'p', 'b', c(0.1, 0.1), c(0.5, 0.5), '>'),
+  expect_error(define_rule('R1', 'r', 'b', c(0.1, 0.1), '>'),
+               'rule_points must be a list containing two coordinate vectors')
+  
+  expect_error(define_rule('R1', 'r', 'b', list(c(0.1, 0.1)), '>'),
+               'rule_points must contain two points')
+  
+  expect_error(define_rule('R1', 'p', 'b', list(c(0.1, 0.1), c(0.5, 0.5)), '>'),
                'The x_axis must be one of "r", "g" or "b"')
 
-  expect_error(define_rule('R1', 'r', 'B', c(0.1, 0.1), c(0.5, 0.5), '>'),
+  expect_error(define_rule('R1', 'r', 'B', list(c(0.1, 0.1), c(0.5, 0.5)), '>'),
                'The y_axis must be one of "r", "g" or "b"')
 
-  expect_error(define_rule('R1', 'b', 'b', c(0.1, 0.1), c(0.5, 0.5), '>'),
+  expect_error(define_rule('R1', 'b', 'b', list(c(0.1, 0.1), c(0.5, 0.5)), '>'),
                'x_axis and y_axis must be different')
 
-  expect_error(define_rule('R1', 'r', 'g', c(0.5, 0.5), c(0.5, 0.5), '>'),
+  expect_error(define_rule('R1', 'r', 'g', list(c(0.5, 0.5), c(0.5, 0.5)), '>'),
                'Start and end points are the same')
 
-  expect_error(define_rule('R1', 'r', 'g', c(0.5, 0.5), c(0.5, 0.5), '$'),
+  expect_error(define_rule('R1', 'r', 'g', list(c(0.1, 0.1), c(0.5, 0.5)), '$'),
                'The comparation operator must be one of ">", ">=", "<" or "<="')
 })
 
 test_that("Output of define_rule() is correct", {
 
   load(system.file("extdata", "test_rules.R", package = "pixelclasser"))
-  new_rule01 <- define_rule('Rule01', 'r', 'g', c(0.3, 0.0), c(0.3, 0.55),
-                            comparator = '>')
-  new_rule03 <- define_rule('Rule03', 'r', 'g', c(0.0, 0.3), c(0.55, 0.3),
-                            comparator = '>')
-  new_rule05 <- define_rule('Rule05', 'r', 'g', c(0.15, 0.0), c(0.55, 0.4),
-                            comparator = '>')
+  new_rule01 <- define_rule('Rule01', 'r', 'g',
+                            list(c(0.3, 0.0), c(0.3, 0.55)), comp.op = '>')
+  new_rule03 <- define_rule('Rule03', 'r', 'g',
+                            list(c(0.0, 0.3), c(0.55, 0.3)), comp.op = '>')
+  new_rule05 <- define_rule('Rule05', 'r', 'g',
+                            list(c(0.15, 0.0), c(0.55, 0.4)), comp.op = '>')
 
-  expect_equal(class(new_rule01), "rule")
+  expect_equal(class(new_rule01), "pixel_rule")
   expect_equal(new_rule01, rule01)
   expect_equal(new_rule03, rule03)
   expect_equal(new_rule05, rule05)
@@ -135,6 +140,14 @@ test_that("Parameters in plot_rule() are verified", {
   plot_rgb_plane('r', 'g')
 
   expect_error(plot_rule(rule = subcat01))
+})
+
+# Function label_rule() --------------------------------------------------------
+
+test_that("Parameters in label_rule() are verified", {
+  load(system.file("extdata", "test_subcat.R", package = "pixelclasser"))
+  
+  expect_error(label_rule(rule = subcat01))
 })
 
 # Function save_classif_image() ------------------------------------------------
