@@ -80,7 +80,9 @@ define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp.op){
     names(rule_points) <- c("first_point", "second_point")
     class(rule_points) <- "rule_points"
   } else {
-    stop('rule_points must be a list containing two coordinate vectors')
+    if (!identical(class(rule_points, "rule_points"))){
+      stop('rule points must contain a list or a rule_point object')
+    }
   }
   
   # Parameter checks -----------------------------------------------------------

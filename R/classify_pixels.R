@@ -30,7 +30,7 @@
 #' }
 #'
 #' @seealso \code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}},
-#' \code{\link[grDevices]{colours}}
+#' \code{\link[grDevices]{colours}}.
 #'
 #' @examples
 #' \dontrun{
