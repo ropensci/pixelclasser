@@ -11,23 +11,29 @@
 #' @param rule_points an object of  of class \code{"rule_points"} created with
 #'   function \code{place_rule()}, or a list containing the coordinates of two
 #'   points that define the line.
-#' @param comp.op a character string containing one of the comparison
+#' @param comp_op a character string containing one of the comparison
 #'   operators \code{">", ">=", "<", "<="}.
 #'
 #' @return A list of class \code{pixel_rule} containing the following elements:
-#'   \itemize{ \item \code{rule_name}: a character string containing the rule
-#'   name. \item \code{rule_text}: a character string containing the
-#'   mathematical expression of the rule. \item \code{comp.op}: a character
-#'   string containing the comparison operator used in the rule. \item \code{a}:
-#'   a numerical vector containing the parameter \code{a} (slope) of the line.
+#'   \itemize{
+#'   \item \code{rule_name}: a character string containing the rule name.
+#'   \item \code{rule_text}: a character string containing the mathematical
+#'   expression of the rule.
+#'   \item \code{comp_op}: a character string containing the comparison operator
+#'   used in the rule.
+#'   \item \code{a}: a numerical vector containing the parameter \code{a}
+#'   (slope) of the line.
 #'   \item \code{c}: a numerical vector containing the parameter \code{c}
-#'   (intercept) of the line. \item \code{x_axis}: a character string containing
-#'   the colour variable selected as \code{x} axis. \item \code{y_axis}: a
-#'   character string containing the colour variable selected as \code{y} axis.
+#'   (intercept) of the line.
+#'   \item \code{x_axis}: a character string containing the colour variable
+#'   selected as \code{x} axis.
+#'   \item \code{y_axis}: a character string containing the colour variable
+#'   selected as \code{y} axis.
 #'   \item \code{first_point}: a numerical vector containing the coordinates of
-#'   the first point used to estimate the line equation. \item
-#'   \code{second_point}: a numerical vector containing the coordinates of the
-#'   second point. }
+#'   the first point used to estimate the line equation.
+#'   \item \code{second_point}: a numerical vector containing the coordinates of
+#'   the second point.
+#'   }
 #'
 #' @details This function estimates the parameters \code{a} and \code{c} of the
 #'   line \code{y = ax + c} from the coordinates of two points on the line.
@@ -68,7 +74,7 @@
 #' }
 #' @export
 
-define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp.op){
+define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp_op){
 
   x <- 1
   y <- 2
@@ -97,7 +103,7 @@ define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp.op){
   if (!(y_axis %in% c('r', 'g', 'b'))){
     stop('The y_axis must be one of "r", "g" or "b"', call. = F)
   }
-  if (!(comp.op %in% c(">", ">=", "<", "<="))){
+  if (!(comp_op %in% c(">", ">=", "<", "<="))){
     stop('The comparation operator must be one of ">", ">=", "<" or "<="',
          call. = F)
   }
@@ -113,18 +119,18 @@ define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp.op){
        (rule_points$second_point[x] - rule_points$first_point[x])
 
   if (is.infinite(a)){
-    # A vertical line; formula: x_axis <comp.op> c
+    # A vertical line; formula: x_axis <comp_op> c
     c <- rule_points$first_point[x]
-    rule_text <- paste("image_prop[,, ", x_axis, "]",comp.op, c)
+    rule_text <- paste("image_prop[,, ", x_axis, "]",comp_op, c)
   } else{
-    # Other lines: formula: y_axis <comp.op> a * x_axis + c
+    # Other lines: formula: y_axis <comp_op> a * x_axis + c
     c <- rule_points$first_point[y] - (a * rule_points$first_point[x])
-    rule_text <- paste("image_prop[,, ", y_axis, "]", comp.op,
+    rule_text <- paste("image_prop[,, ", y_axis, "]", comp_op,
                        a, "*", "image_prop[,,", x_axis, "]", "+", c)
   }
   # Result construction --------------------------------------------------------
   result <- list("rule_name" = rule_name, "rule_text" = rule_text,
-                 "comp.op" = comp.op, "a" = a, "c" = c, "x_axis" = x_axis,
+                 "comp_op" = comp_op, "a" = a, "c" = c, "x_axis" = x_axis,
                  "y_axis" = y_axis, "first_point" = rule_points$first_point,
                  "second_point" = rule_points$second_point)
   class(result) <- c("pixel_rule")

@@ -147,18 +147,22 @@ rule_01 <- define_rule("rule_01", "g", "b", list(c(0.345, 1/3), c(0.40, 0.10)), 
 rule_02 <- define_rule("rule_02", "g", "b", list(c(0.345, 1/3), c(0.40, 0.10)), ">=")
 ```
 
+Both rules are described by the same line but use different comparison operator. `rule_01` includes the pixels at the left (under) of the line and `rule_02` those at the right (over) and on the line, i.e. the dead leaves and the fresh leaves, respectively. Each line can generate two rules, but beware: if `>` and `<` define the rules, then the points on the line will not belong to any category, and if `>=` and `<=` are used, the points on the line will belong to the two categories simultaneously. The function that classifies the pixels can identify the second type of error, but if there are legitimate unclassified points, the first type can pass unnoticed.
+
 The second method uses `place_rule()`, which is a wrapper for `graphics:locator()` that allows the user to select the two points by clicking in the rgb plot with the mouse:
 
 ```
-rp01 <- place_rule()
-rp02 <- place_rule("v")
+rp01 <- place_rule("g", "b")
+rp02 <- place_rule("g", "b", "v")
 rule_07 <- define_rule("rule_07", "g", "b", rp02, ">=")
 ```
 The function returns an object of class `rule_points` that can then be passed to `define_rule()` in the parameter `rule_points`. The second example produces a vertical line ("h" for horizontal lines), which would be difficult to produce by hand. To make the code self-contained, `create_rule()` is used in this vignette, but using `place_rule()` is the easiest way to define the rules. It is even easier to place the call to `place_rule()` in the call to `create_rule()` to avoid creating the intermediate `rule_points` object:
 
 ```
-rule_07 <- define_rule("rule_07", "g", "b", place_rule(), "<")
+rule_07 <- define_rule("rule_07", "g", "b", place_rule("g", "b"), "<")
 ```
+
+Note that both `define_rule()` and the `rule_points` object must use the same colour variables as axis. `define_rule()` throws an error if this condition does not hold.
 
 The rule objects store the values passed as parameters, the parameters of the equation of the line (*a* and *c*), and a textual representation of the equation which will be evaluated by the classification function. To check the correctness of the rules, the line can be added to the plot:
   
@@ -170,8 +174,6 @@ plot_pixels(test_ivy_rgb, "g", "b", col = blue)
 plot_pixels(test_dead_rgb, "g", "b", col = brown)
 plot_rule(rule_01, lty = 2, col = brown)
 ```
-
-Both rules are described by the same line but use different comp.op. `rule_01` includes the pixels at the left (under) of the line and `rule_02` those at the right (over) and on the line, i.e. the dead leaves and the fresh leaves, respectively. Each line can generate two rules, but beware: if `>` and `<` define the rules, then the points on the line will not belong to any class, and if `>=` and `<=` are used, the points on the line will belong to two pixel categories simultaneously.
 
 In order to classify the fresh leaves into ivy and oak categories, more rules are needed. The pixels of the oak test image were plotted and used to define additional rules:
 

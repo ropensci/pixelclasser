@@ -3,13 +3,22 @@
 #' A wrapper function for \code{graphics:locator} that facilitates the creation
 #' of rules.
 #'
+#' @param x_axis a character string indicating the colour variable that
+#'   corresponds to the x axis, one of \code{"r"}, \code{"g"} or \code{"b"}.
+#' @param y_axis a character string indicating the colour variable that
+#'   corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.
 #' @param line_type a character string indicating that the line is
 #'   \code{"vertical"} or \code{"horizontal"}.
 #'
-#' @return A list containing the following elements: \itemize{ \item
-#'   \code{first_point}: coordinates of the start point of the line. \item
-#'   \code{second_point}: coordinates of the end point of the line. }
-#'
+#' @return A list of class \code{rule_points} containing the following elements:
+#' \itemize{
+#' \item \code{x_axis}: a character string containing the colour variable
+#'   selected as \code{x} axis.
+#' \item \code{y_axis}: a character string containing the colour variable
+#'   selected as \code{y} axis.
+#' \item \code{first_point}: coordinates of the start point of the line.
+#' \item \code{second_point}: coordinates of the end point of the line.
+#' }
 #' @details This function calls \code{graphics::locator} allowing to select two
 #'   points, then plots the line joining these points and returns a list
 #'   containing the coordinates of the points. The coordinates are rearranged in
