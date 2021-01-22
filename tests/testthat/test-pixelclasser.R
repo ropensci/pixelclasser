@@ -22,6 +22,8 @@ test_that("Output of read_image() is correct", {
 # Function define_rule() -------------------------------------------------------
 
 test_that("Parameters in define_rule() are verified", {
+  
+  
 
   expect_error(define_rule('R1', 'r', 'b', c(0.1, 0.1), '>'),
                'rule_points must be a list containing two coordinate vectors')

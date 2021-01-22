@@ -32,28 +32,30 @@
 #'
 #' @export
 
-place_rule <- function(line_type = 'normal'){
+place_rule <- function(x_axis, y_axis, line_type = 'normal'){
 
   x <- 1
   y <- 2
   
-  result <- vector(mode = "list", length = 2)
-  names(result) <- c('first_point', 'second_point')
+  result <- vector(mode = "list", length = 4)
+  names(result) <- c("x_axis", "y_axis", "first_point", "second_point")
+  class(result) <- "rule_points"
   
-  coordinates <- graphics::locator(n = 2, type = 'l')
-  
+  coordinates <- graphics::locator(n = 2, type = "l")
   result$first_point <- c(coordinates$x[1], coordinates$y[1])
   result$second_point <- c(coordinates$x[2], coordinates$y[2])
-  names(result$first_point) <- c('x', 'y')
-  names(result$second_point) <- c('x', 'y')
+  names(result$first_point) <- c("x", "y")
+  names(result$second_point) <- c("x", "y")
+  result$x_axis = x_axis
+  result$y_axis = y_axis
   
-  if (startsWith('vertical', line_type)){
-    result$second_point['x'] <- result$first_point['x']
+  if (startsWith("vertical", line_type)){
+    result$second_point["x"] <- result$first_point["x"]
   }
   
-  if (startsWith('horizontal', line_type)){
-    result$second_point['y'] <- result$first_point['y']
+  if (startsWith("horizontal", line_type)){
+    result$second_point["y"] <- result$first_point["y"]
   }
-  class(result) <- "rule_points"
+  
   return(result)
 }

@@ -75,26 +75,31 @@ define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp.op){
 
   if (identical(class(rule_points), "list")){
     if (length(rule_points) != 2){
-      stop('rule_points must contain two points')
+      stop('rule_points must contain two points', call. = F)
     }
     names(rule_points) <- c("first_point", "second_point")
     class(rule_points) <- "rule_points"
   } else {
-    if (!identical(class(rule_points, "rule_points"))){
-      stop('rule points must contain a list or a rule_point object')
+    if (!identical(class(rule_points), "rule_points")){
+      stop('rule points must contain a list or a rule_point object', call. = F)
+    }
+    if (!(identical(x_axis, rule_points$x_axis) & 
+          identical(y_axis, rule_points$y_axis))){
+      stop('rule_points axis are not the same as x_axis and y_axis', .call = F)
     }
   }
   
   # Parameter checks -----------------------------------------------------------
 
   if (!(x_axis %in% c('r', 'g', 'b'))){
-    stop('The x_axis must be one of "r", "g" or "b"')
+    stop('The x_axis must be one of "r", "g" or "b"', call. = F)
   }
   if (!(y_axis %in% c('r', 'g', 'b'))){
-    stop('The y_axis must be one of "r", "g" or "b"')
+    stop('The y_axis must be one of "r", "g" or "b"', call. = F)
   }
   if (!(comp.op %in% c(">", ">=", "<", "<="))){
-    stop('The comparation operator must be one of ">", ">=", "<" or "<="')
+    stop('The comparation operator must be one of ">", ">=", "<" or "<="',
+         call. = F)
   }
   if (identical(x_axis, y_axis)){
     stop('x_axis and y_axis must be different')
