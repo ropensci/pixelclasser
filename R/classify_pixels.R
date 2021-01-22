@@ -22,15 +22,14 @@
 #'   name is the category name. They contains the second-level list, which have
 #'   the following elements:
 #' \itemize{
-#'   \item \code{colour}: a string defining a colour to paint the pixels in the
-#'   classified image. Inherited from the
-#'   \code{pixel_class} object defining the class.
+#'   \item \code{colour}: a matrix defining a colour to paint the pixels in the
+#'   classified image. Inherited from the \code{pixel_class} object defining the
+#'   class.
 #'   \item \code{incid_mat}: a logical matrix where \code{TRUE} values indicate
 #'   that the pixel belongs to this pixel category.
 #' }
 #'
-#' @seealso \code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}},
-#' \code{\link[grDevices]{colours}}.
+#' @seealso \code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}}.
 #'
 #' @examples
 #' \dontrun{

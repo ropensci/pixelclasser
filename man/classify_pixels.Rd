@@ -25,9 +25,9 @@ An object of class \code{classified_image}, which is a list of lists.
   name is the category name. They contains the second-level list, which have
   the following elements:
 \itemize{
-  \item \code{colour}: a string defining a colour to paint the pixels in the
-  classified image. Inherited from the
-  \code{pixel_class} object defining the class.
+  \item \code{colour}: a matrix defining a colour to paint the pixels in the
+  classified image. Inherited from the \code{pixel_class} object defining the
+  class.
   \item \code{incid_mat}: a logical matrix where \code{TRUE} values indicate
   that the pixel belongs to this pixel category.
 }
@@ -68,6 +68,5 @@ dead_live_classified <- classify_pixels(ivy_oak_rgb, cat_dead_leaves,
 
 }
 \seealso{
-\code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}},
-\code{\link[grDevices]{colours}}
+\code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}}.
 }

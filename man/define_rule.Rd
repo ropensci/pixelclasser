@@ -4,7 +4,7 @@
 \alias{define_rule}
 \title{Creates a rule object}
 \usage{
-define_rule(rule_name, x_axis, y_axis, rule_points, comp.op)
+define_rule(rule_name, x_axis, y_axis, rule_points, comp_op)
 }
 \arguments{
 \item{rule_name}{a character string containing the name of the rule.}
@@ -19,24 +19,30 @@ corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
 function \code{place_rule()}, or a list containing the coordinates of two
 points that define the line.}
 
-\item{comp.op}{a character string containing one of the comparison
+\item{comp_op}{a character string containing one of the comparison
 operators \code{">", ">=", "<", "<="}.}
 }
 \value{
 A list of class \code{pixel_rule} containing the following elements:
-  \itemize{ \item \code{rule_name}: a character string containing the rule
-  name. \item \code{rule_text}: a character string containing the
-  mathematical expression of the rule. \item \code{comp.op}: a character
-  string containing the comparison operator used in the rule. \item \code{a}:
-  a numerical vector containing the parameter \code{a} (slope) of the line.
+  \itemize{
+  \item \code{rule_name}: a character string containing the rule name.
+  \item \code{rule_text}: a character string containing the mathematical
+  expression of the rule.
+  \item \code{comp_op}: a character string containing the comparison operator
+  used in the rule.
+  \item \code{a}: a numerical vector containing the parameter \code{a}
+  (slope) of the line.
   \item \code{c}: a numerical vector containing the parameter \code{c}
-  (intercept) of the line. \item \code{x_axis}: a character string containing
-  the colour variable selected as \code{x} axis. \item \code{y_axis}: a
-  character string containing the colour variable selected as \code{y} axis.
+  (intercept) of the line.
+  \item \code{x_axis}: a character string containing the colour variable
+  selected as \code{x} axis.
+  \item \code{y_axis}: a character string containing the colour variable
+  selected as \code{y} axis.
   \item \code{first_point}: a numerical vector containing the coordinates of
-  the first point used to estimate the line equation. \item
-  \code{second_point}: a numerical vector containing the coordinates of the
-  second point. }
+  the first point used to estimate the line equation.
+  \item \code{second_point}: a numerical vector containing the coordinates of
+  the second point.
+  }
 }
 \description{
 Creates an object of class \code{pixel_rule} from a line defined by the user

@@ -4,16 +4,28 @@
 \alias{place_rule}
 \title{Places a line on the rgb plot}
 \usage{
-place_rule(line_type = "normal")
+place_rule(x_axis, y_axis, line_type = "none")
 }
 \arguments{
+\item{x_axis}{a character string indicating the colour variable that
+corresponds to the x axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
+
+\item{y_axis}{a character string indicating the colour variable that
+corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
+
 \item{line_type}{a character string indicating that the line is
 \code{"vertical"} or \code{"horizontal"}.}
 }
 \value{
-A list containing the following elements: \itemize{ \item
-  \code{first_point}: coordinates of the start point of the line. \item
-  \code{second_point}: coordinates of the end point of the line. }
+A list of class \code{rule_points} containing the following elements:
+\itemize{
+\item \code{x_axis}: a character string containing the colour variable
+  selected as \code{x} axis.
+\item \code{y_axis}: a character string containing the colour variable
+  selected as \code{y} axis.
+\item \code{first_point}: coordinates of the start point of the line.
+\item \code{second_point}: coordinates of the end point of the line.
+}
 }
 \description{
 A wrapper function for \code{graphics:locator} that facilitates the creation

@@ -41,8 +41,16 @@
 #'
 #' @export
 
-place_rule <- function(x_axis, y_axis, line_type = 'normal'){
+place_rule <- function(x_axis, y_axis, line_type = 'none'){
 
+  # Parameter tests ------------------------------------------------------------
+  # Standard parameter error is thrown after the selecting the line points, so
+  # this test is needed to stop the function early.
+  if (missing(x_axis) | missing(y_axis)){
+    stop('X or Y colour variable missing', call. = F)
+  }
+  
+  # Main code ------------------------------------------------------------------
   x <- 1
   y <- 2
   

@@ -3,7 +3,7 @@
 print.pixel_rule <- function(x, digits = NULL, quote = TRUE,
                              na.print = NULL, print.gap = NULL, right = FALSE,
                              max = NULL, useSource = TRUE, ...){
-  cat("Rule name:", x$rule_name, '\n')
+  cat('Rule name: "', x$rule_name, '"\n', sep = '')
   if (x$c < 0){
     cat("Line equation: ", x$y_axis, ' ', x$comp.op, ' ', x$a, ' ', x$x_axis,
         ' - ', abs(x$c), '\n', sep = '')

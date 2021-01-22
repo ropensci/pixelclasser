@@ -87,7 +87,7 @@ define_cat <- function(cat_name, cat_colour, ...){
          .call = FALSE)
   }
 
-  # Creating the object of class "pixel_cat" ---------------------------------
+  # Creating the object of class "pixel_cat" -----------------------------------
   if (number_of_rules > 0){
     # Creating a subcategory for the set of rules
     new_subcat <- define_subcat("S0", ...=...)

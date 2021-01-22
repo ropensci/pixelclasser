@@ -96,6 +96,8 @@ define_rule <- function(rule_name, x_axis, y_axis, rule_points, comp_op){
   }
   
   # Parameter checks -----------------------------------------------------------
+  
+  
 
   if (!(x_axis %in% c('r', 'g', 'b'))){
     stop('The x_axis must be one of "r", "g" or "b"', call. = F)
