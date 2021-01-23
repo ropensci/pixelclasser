@@ -4,7 +4,7 @@
 \alias{place_rule}
 \title{Places a line on the rgb plot}
 \usage{
-place_rule(x_axis, y_axis, line_type = "none")
+place_rule(x_axis, y_axis, line_type = "free")
 }
 \arguments{
 \item{x_axis}{a character string indicating the colour variable that
@@ -14,7 +14,8 @@ corresponds to the x axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
 corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
 
 \item{line_type}{a character string indicating that the line is
-\code{"vertical"} or \code{"horizontal"}.}
+\code{"vertical"}, \code{"horizontal"} or otherwise (\code{"free"}, the
+default).}
 }
 \value{
 A list of class \code{rule_points} containing the following elements:
@@ -28,28 +29,21 @@ A list of class \code{rule_points} containing the following elements:
 }
 }
 \description{
-A wrapper function for \code{graphics:locator} that facilitates the creation
-of rules.
+A wrapper function for \code{graphics::locator} that makes the creation
+of rules easier.
 }
 \details{
 This function calls \code{graphics::locator} allowing to select two
-  points, then plots the line joining these points and returns a list
-  containing the coordinates of the points. The coordinates are rearranged in
-  a way convenient to be passed to \code{define_rule()}.
+  points, plots the line joining these points and returns a list
+  containing their coordinates. The coordinates are rearranged to
+  pass them to \code{define_rule()}.
 
-  True horizontal and vertical lines are difficult to create by hand. In 
+  True horizontal and vertical lines are difficult to create by hand. In
   these cases, specifying \code{"vertical"} or \code{"horizontal"} (partial
   match allowed, i e "h") will copy the appropriate coordinate value from the
   first point to the second. Note that this is done after \code{locator()}
-  returns, so the plot will show the line as was created by the user, not the
-  corrected one. Use \code{plot_rule()} to see this.
-}
-\examples{
-\dontrun{
-After creating a plot with the points, the lines are created with
-line01 <- place_rule()        # A "normal" line
-line02 <- place_rule("h")     # An horizontal line}
-
+  returns, so the plot will show the line joining the original points, not
+  the corrected ones. Use \code{plot_rule()} to see corrected line.
 }
 \seealso{
 \code{\link[graphics]{locator}}, \code{\link{define_rule}},

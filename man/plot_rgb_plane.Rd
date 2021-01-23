@@ -19,7 +19,7 @@ plot_rgb_plane(
 \item{y_axis}{a character string indicating which colour variable use as y.}
 
 \item{plot_limits}{a logical value. When TRUE (default) the limits of the
-area where the pixels can be found is plotted.}
+area where the pixels can be found are plotted.}
 
 \item{plot_guides}{a logical value. When TRUE (default) the limits of the
 area where one variable dominates are plotted.}
@@ -44,6 +44,14 @@ rules can be later added to the plot using functions \code{plot_pixels()} and
 Graphical parameters can be passed to the function to modify the
   appearance of the plot. Intended for passing \code{xlim} and \code{ylim}
   values to plot the part of the graph where the points are concentrated.
+  
+  Because the variables were transformed into proportions, the pixel are
+  always inside the triangle defined by the points \code{(0, 0), (1, 0), (0,
+  1)}. This triangle is plotted in blue. The point where all three variables
+  have the same value is \code{(1/3, 1/3)}. The lines joining this point with
+  the centers of the triangle sides divide the areas where one of the three
+  variables has higher proportions than the other two. These lines are
+  plotted as visual aids, so they can be deleted at will.
 }
 \examples{
 # Simplest call

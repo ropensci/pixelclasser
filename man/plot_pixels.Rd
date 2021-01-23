@@ -13,8 +13,8 @@ plot_pixels(image_rgb, x_axis, y_axis, ...)
 
 \item{y_axis}{a character string indicating which colour variable use as y.}
 
-\item{\dots}{additional graphical parameters, mainly to set the colour (col=)
-for plotting the points.}
+\item{\dots}{additional graphical parameters, mainly to set the colour
+(\code{col}) of the points.}
 }
 \value{
 The function does not return any value.
@@ -26,31 +26,28 @@ triangular diagram previously created by \code{plot_rgb_plane()}.
 }
 \details{
 It is advantageous to specify a colour such as \code{"#00000005"}
-  which is black but highly transparent. In this way a density plot is
-  created because the clustering of points creates areas of darker colour.
+  which is black but almost transparent. In this way a kind of density plot
+  is created because the clustering of points creates areas of darker colour.
   Note that a colour without specific transparency information defaults to an
   opaque colour, so \code{"#000000"} is the same as \code{"#000000ff"}. The
-  colours must be specified in any form understandable by function
-  \code{col2rgb}. Note also that the points are plotted using pch = ".", as 
-  any other symbol would clutter the graph.
-
-  Caution: The colour variables passed in \code{x_axis} and \code{y_axis}
-  must be the same that were used to plot the plane.
+  colours can be specified in any form understandable by
+  \code{grDevices::col2rgb}, but the hexadecimal string allows setting the
+  colour transparency and it is the preferred style. Note also that the
+  points are plotted using pch = ".", as any other symbol would clutter the
+  graph.
   
-  Warning: plotting several million points in an R graph is an slow process. 
-  Be patient or reduce the size of the images to the smallest possible.
+  Warning: plotting several million points in an R graph is a slow process. 
+  Be patient or reduce the size of the images as much as possible.
   Having a nice smartphone with a petapixel camera sensor is good for
   artistic purposes, but not always for efficient scientific work.
 }
 \examples{
-\dontrun{
 
 # Plotting the pixels of the example image included in this package
 ivy_oak_rgb <- read_image(system.file("extdata", "IvyOak400x300.JPG",
                                        package = "pixelclasser"))
 plot_rgb_plane("g", "b")
 plot_pixels(ivy_oak_rgb, "g", "b", "#00000005")
-}
 
 }
 \seealso{

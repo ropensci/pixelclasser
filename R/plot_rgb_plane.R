@@ -11,7 +11,7 @@
 #' @param x_axis a character string indicating which colour variable use as x.
 #' @param y_axis a character string indicating which colour variable use as y.
 #' @param plot_limits a logical value. When TRUE (default) the limits of the
-#'   area where the pixels can be found is plotted.
+#'   area where the pixels can be found are plotted.
 #' @param plot_guides a logical value. When TRUE (default) the limits of the
 #'   area where one variable dominates are plotted.
 #' @param plot_grid a logical value; if TRUE (default) a grid is added.
@@ -22,6 +22,14 @@
 #' @details Graphical parameters can be passed to the function to modify the
 #'   appearance of the plot. Intended for passing \code{xlim} and \code{ylim}
 #'   values to plot the part of the graph where the points are concentrated.
+#'   
+#'   Because the variables were transformed into proportions, the pixel are
+#'   always inside the triangle defined by the points \code{(0, 0), (1, 0), (0,
+#'   1)}. This triangle is plotted in blue. The point where all three variables
+#'   have the same value is \code{(1/3, 1/3)}. The lines joining this point with
+#'   the centers of the triangle sides divide the areas where one of the three
+#'   variables has higher proportions than the other two. These lines are
+#'   plotted as visual aids, so they can be deleted at will.
 #'
 #' @seealso \code{\link{plot_pixels}}, \code{\link{plot_rule}},
 #'   \code{\link{define_rule}}

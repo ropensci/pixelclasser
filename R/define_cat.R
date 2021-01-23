@@ -11,32 +11,26 @@
 #'   \code{pixel_rule} and \code{pixel_subcat} objects is not allowed.
 #'
 #' @return A list of class \code{pixel_cat} with the following elements:
-#' \itemize{
-#'     \item \code{name}: a character string containing the name of the pixel
-#'     category.
-#'     \item \code{colour}: a character string describing the colour of the
-#'     pixels of the category in the classified images.
-#'     \item \code{subcats}: a list containing the subcategories. Their names
-#'     are the names of the elements of the list.
-#'     Note that the list contains at least one subcategory.
-#' }
+#'   \itemize{ \item \code{name}: a character string containing the name of the
+#'   pixel category. \item \code{colour}: a character string describing the
+#'   colour of the pixels of the category in the classified images. \item
+#'   \code{subcats}: a list containing the subcategories. Their names are the
+#'   names of the elements of the list. }
 #'
-#' @details The function needs a list of objects of class \code{pixel_subcat}
-#'   and creates a list with them. However, for cases that need a single set of
-#'   rules, i.e. no subcategories needed, the rules can be passed to the
-#'   function, which creates an internal subcategory object to contain them.
-#'   This simplifies the creation of the \code{pixel_cat} objects in these
-#'   cases.
+#' @details The function receives a list of objects of class \code{pixel_subcat}
+#'   and creates a list of class \code{pixel_cat} with them. However, for cases
+#'   that does not need subcategories, i e that only need a set of rules,need a
+#'   single set of rules, these can be passed to the function, which creates an
+#'   internal subcategory object to contain them. See the examples below.
 #'
-#'   Note that the list of objects passed to the function must be either of
-#'   class \code{pixel_rule} or \code{pixel_subcat}, but not a mixture. In this
-#'   case the function terminates with an error message.
+#'   Note that it is an error to pass a mixture of \code{pixel_rule} and
+#'   \code{pixel_subcat} objects.
 #'
-#'   The colours must be specified in a way that can be translated into RGB
-#'   format by function \code{col2rgb()}.
+#'   \code{colour} can be specified in any form understood by
+#'   \code{grDevices::col2grb}.
 #'
 #' @seealso \code{\link{define_rule}}, \code{\link{define_subcat}},
-#' \code{\link[grDevices]{col2rgb}}
+#'   \code{\link[grDevices]{col2rgb}}
 #'
 #' @examples
 #' # The rules are not consistent, they are only useful as examples

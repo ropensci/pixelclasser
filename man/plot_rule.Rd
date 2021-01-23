@@ -25,42 +25,23 @@ This function draws the line that defines a rule on the plot created by
 \code{plot_rgb_plane()}.
 }
 \details{
-The function uses the information stored in the pixel_rule object to
-  plot the line. Therefore the line starts and ends at the points stored in
-  the pixel_rule object. If these points were not convenient for plotting,
-  the coordinates of other points on the line can be calculated using its
-  equation (the pixel_rule object contains the parameters of the line) and
-  the original coordinates replaced by these.
+The function uses the information stored in the \code{pixel_rule
+  object} to plot the line.
 
-  Use the \dots to set the colour and other characteristics of the line.
-  These will be applied to the label as well. To apply a different colour to 
-  the label, do not set a value for this parameter and create the label using
-  \code{graphics::text()}. To place the label at one end of the line, pass
-  the coordinates contained in the pixel_rule object to \code{text()}.
+  Use the \dots to set the colour and other characteristics of the line. Use
+  any character string understood by \code{col2rgb()}.
   
-  Caution: The colour variables used to define the rules and those used to
-  plot the triangular graph must be the same.
-
-  To set the colour of the line, use any character string understood by
-  \code{col2rgb()}.
+  Labels can be added to the rule using \code{label_rule()}.
 }
 \examples{
 rule_01 <- define_rule("rule_01", "g", "b",
                       list(c(0.345, 1/3), c(0.40, 0.10)), "<")
-rule_02 <- define_rule("rule_02","g", "b",
-                      list(c(0.35, 0.30), c(0.565, 0.10)), "<")
 
 plot_rgb_plane("g", "b")
-
-# The first rule is represented as a green line without label
 plot_rule(rule_01, col = "green")
-
-# And the second in black with a label (shifted to the right)
-plot_rule(rule_02, label = expression('L'[1]*''), lty = 1,
-          col = 'black', adj = 0)
 
 }
 \seealso{
 \code{\link{plot_rgb_plane}}, \code{\link{define_rule}},
-  \code{\link[grDevices]{col2rgb}}
+  \code{\link{label_rule}} \code{\link[grDevices]{col2rgb}}
 }

@@ -7,14 +7,14 @@
 read_image(file_name)
 }
 \arguments{
-\item{file_name}{A character string containing the path to the image file.}
+\item{file_name}{A character string containing the name of the image file.}
 }
 \value{
 Returns an array of dimensions \code{r x c x 3} and class
   \code{transformed_image}, being \code{r} and \code{c} the number of rows
   and columns in the image. The last dimension corresponds to the \code{R},
   \code{G} and \code{B} variables (= bands) that define the colours of the
-  pixels. The values in the array belong to the interval are the proportions
+  pixels. The values in the array are the proportions
   of each colour (\code{r, g, b}), i.e. \code{r} = \code{R} / (\code{R + G +
   B}), and so on.
 }
@@ -29,16 +29,14 @@ This function calls the functions \code{readJPEG()} and
   data into an R array. Then it transforms the data into proportions
 }
 \examples{
-\dontrun{
 
 # An example that loads the example file included in the package
 ivy_oak_rgb <- read_image(system.file("extdata", "IvyOak400x300.JPG", 
                                        package = "pixelclasser"))
-}
 
 }
 \seealso{
 For more information about jpeg and tiff file formats, see the help
   pages of \code{\link[jpeg]{readJPEG}} and \code{\link[tiff]{readTIFF}}
-  functions.
+  functions in packages \code{jpeg} and \code{tiff}, respectively.
 }

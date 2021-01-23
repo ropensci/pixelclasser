@@ -4,8 +4,8 @@
 #' \code{transformed_image} using the rules contained in a list of objects of
 #' class \code{pixel_cat}.
 #'
-#' @param image_prop an array containing the transformed colours. It must be an
-#'   object produced with function \code{transform_colours()}.
+#' @param image_prop an array containing the image. It must be an
+#'   object produced with function \code{read_image()}.
 #' @param \dots a list of objects of class \code{pixel_cat} containing the
 #'   classification rules.
 #' @param unclassed_colour a character string setting the colour to be assigned
@@ -13,14 +13,10 @@
 #' @param verbose a logical value. When TRUE (default) the function prints some
 #'   statistics about the classification.
 #'
-#' @details This function generates a set of incidence matrices indicating
-#' whether a pixel belongs to a pixel category or not. An additional matrix is
-#' added identifying the pixels that do not belong to the defined categories.
-#'
-#' @return An object of class \code{classified_image}, which is a list of lists.
-#'   Each first-level element corresponds to one of the pixel categories and its
-#'   name is the category name. They contains the second-level list, which have
-#'   the following elements:
+#' @return Returns an object of class \code{classified_image}, which is a list
+#'   of lists. Each first-level element corresponds to one of the pixel
+#'   categories and its name is the category name. They contains the
+#'   second-level list, which have the following elements:
 #' \itemize{
 #'   \item \code{colour}: a matrix defining a colour to paint the pixels in the
 #'   classified image. Inherited from the \code{pixel_class} object defining the
@@ -29,10 +25,27 @@
 #'   that the pixel belongs to this pixel category.
 #' }
 #'
+#' @details This function generates a set of incidence matrices indicating
+#'   whether a pixel belongs to a pixel category or not. An additional matrix
+#'   identifies the pixels that do not belong to the defined categories, i e
+#'   unclassed pixels. Depending on how the rules were defined, it can be void
+#'   or contain pixels, but it is always present and named \code{unclassified}.
+#'
+#'   To create the incidence matrices for each category, a matrix for each rule
+#'   is created and then combined with the matrices of the other using the
+#'   \code{and} operator.
+#'
+#'   When a set of subcategories is used, the procedure is the same for each
+#'   subcategory and then the matrices of the subcategories are combined again,
+#'   this time using the \code{or} operator. See the help for
+#'   \code{define_subcat} for more details.
+#'
+#'   \code{unclassed_colour} can be specified in any form understood by
+#'   \code{grDevices::col2grb}.
+#'   
 #' @seealso \code{\link{define_cat}}, \code{\link[grDevices]{col2rgb}}.
 #'
 #' @examples
-#' \dontrun{
 #'
 #' # The series of steps to classify a fictitious image
 #'
@@ -50,10 +63,8 @@
 #' cat_dead_leaves <- define_cat("dead_leaves", blue, rule_01)
 #' cat_living_leaves <- define_cat("living_leaves", yellow, rule_02)
 #'
-#' dead_live_classified <- classify_pixels(ivy_oak_rgb, cat_dead_leaves,
+#' ivy_oak_classified <- classify_pixels(ivy_oak_rgb, cat_dead_leaves,
 #'                         cat_living_leaves)
-#'
-#' }
 #'
 #' @export
 

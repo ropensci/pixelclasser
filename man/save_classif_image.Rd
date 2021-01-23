@@ -28,7 +28,8 @@ The type of the output file (jpeg or tiff) is selected from the
   "jpeg", "JPEG", "tif", "TIF", "tiff", "TIFF")}.
 
   Note that the default value for jpg quality is 0.7. For maximal quality set
-  \code{quality = 1} using the \dots argument.
+  \code{quality = 1} using the \dots argument. Such adjustments are not needed
+  with \code{tiff} files, as this is a lossless format.
 }
 \examples{
 \dontrun{
@@ -45,5 +46,5 @@ save_classif_image(image01_class, "./myimages/image01_classified.jpg",
 
   For more information about the options for file formatting see see the help
   pages of \code{\link[jpeg]{readJPEG}} and \code{\link[tiff]{readTIFF}}
-  functions.
+  functions in packages \code{jpeg} and \code{tiff}, respectively.
 }
