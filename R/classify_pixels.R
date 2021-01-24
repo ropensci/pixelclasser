@@ -14,8 +14,8 @@
 #'   statistics about the classification.
 #'
 #' @return Returns an object of class \code{classified_image}, which is a list
-#'   of lists. Each first-level element corresponds to one of the pixel
-#'   categories and its name is the category name. They contains the
+#'   containing nested lists. Each first-level element corresponds to one of the
+#'   pixel categories and its name is the category name. They contains the
 #'   second-level list, which have the following elements:
 #' \itemize{
 #'   \item \code{colour}: a matrix defining a colour to paint the pixels in the
@@ -47,7 +47,7 @@
 #'
 #' @examples
 #'
-#' # The series of steps to classify a fictitious image
+#' # The series of steps to classify a image supplied in the package
 #'
 #' yellow <- "#ffcd0eff"
 #' blue <- "#5536ffff"

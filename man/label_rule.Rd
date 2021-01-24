@@ -28,8 +28,8 @@ created by \code{plot_rgb_plane()}.
 \details{
 The function uses the information stored in the pixel_rule object to
   plot the label at the start of the line. The \code{shift} values, expressed
-  in plot coordinates, are added to the coordinates of that point to place the label
-  elsewhere. Note that \dots can be used to pass values for the 
+  in plot coordinates, are added to the coordinates of that point to place
+  the label elsewhere. Note that \dots can be used to pass values for the
   \code{adj} parameter to the underlying \code{graphics::text()} function,
   which also modifies the position of the label.
   
