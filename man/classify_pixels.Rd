@@ -66,10 +66,10 @@ blue <- "#5536ffff"
 ivy_oak_rgb <- read_image(system.file("extdata", "IvyOak400x300.JPG",
                           package = "pixelclasser"))
 
-rule_01 <- define_rule("rule_01", "g", "b", c(0.345, 1/3), c(0.40, 0.10),
-                        comp.op = "<")
-rule_02 <- define_rule("rule_02", "g", "b", c(0.345, 1/3), c(0.40, 0.10),
-                        comp.op = ">=")
+rule_01 <- define_rule("rule_01", "g", "b",
+                       list(c(0.345, 1/3), c(0.40, 0.10)), comp_op = "<")
+rule_02 <- define_rule("rule_02", "g", "b",
+                       list(c(0.345, 1/3), c(0.40, 0.10)), comp_op = ">=")
 
 cat_dead_leaves <- define_cat("dead_leaves", blue, rule_01)
 cat_living_leaves <- define_cat("living_leaves", yellow, rule_02)

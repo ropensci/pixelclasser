@@ -4,7 +4,7 @@
 #' \code{graphics} for plotting the pixels of a transformed rgb image on the
 #' triangular diagram previously created by \code{plot_rgb_plane()}.
 #'
-#' @param image_rgb an object produced by \code{transform_colours()}.
+#' @param image_rgb an object produced by \code{read_image()}.
 #' @param x_axis a character string indicating which colour variable use as x.
 #' @param y_axis a character string indicating which colour variable use as y.
 #' @param \dots additional graphical parameters, mainly to set the colour
@@ -36,7 +36,7 @@
 #' ivy_oak_rgb <- read_image(system.file("extdata", "IvyOak400x300.JPG",
 #'                                        package = "pixelclasser"))
 #' plot_rgb_plane("g", "b")
-#' plot_pixels(ivy_oak_rgb, "g", "b", "#00000005")
+#' plot_pixels(ivy_oak_rgb, "g", "b", col = "#00000005")
 #'
 #' @export
 
@@ -48,6 +48,6 @@ plot_pixels <- function(image_rgb, x_axis, y_axis, ...){
          call. = FALSE)
   } else {
     graphics::points(image_rgb[,, x_axis], image_rgb[,, y_axis],
-                     pch = ".", ... = ...)
+                     pch = ".", ... =  ...)
   }
 }

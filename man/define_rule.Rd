@@ -84,10 +84,10 @@ rule02 <- define_rule("rule02", "g", "b",
 \dontrun{
 # Creating the rule by passing an object of type rule_point:
 rule_points01 <- place_rule("g", "b")
-rule01 <- define_rule("rule01", "g", "b", rule_points01,">")
+rule03 <- define_rule("rule03", "g", "b", rule_points01,">")
 
 # Note that the creation of the intermediate object can be avoided:
-rule01 <- define_rule("rule01", "g", "b", place_rule("g", "b"),">")
+rule04 <- define_rule("rule04", "g", "b", place_rule("g", "b"),">")
 }
 }
 \seealso{

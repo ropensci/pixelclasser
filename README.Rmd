@@ -20,6 +20,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Codecov test coverage](https://codecov.io/gh/CarlosRealR/pixelclasser/branch/master/graph/badge.svg)](https://codecov.io/gh/CarlosRealR/pixelclasser?branch=master)
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital images into colour categories arbitrarily defined by the user. It is a simple version of the multivariate technique known as Support Vector Machine, adapted to this particular use.

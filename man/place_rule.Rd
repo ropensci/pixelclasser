@@ -4,7 +4,7 @@
 \alias{place_rule}
 \title{Places a line on the rgb plot}
 \usage{
-place_rule(x_axis, y_axis, line_type = "free")
+place_rule(x_axis, y_axis, line_type = "f")
 }
 \arguments{
 \item{x_axis}{a character string indicating the colour variable that
@@ -13,9 +13,8 @@ corresponds to the x axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
 \item{y_axis}{a character string indicating the colour variable that
 corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.}
 
-\item{line_type}{a character string indicating that the line is
-\code{"vertical"}, \code{"horizontal"} or otherwise (\code{"free"}, the
-default).}
+\item{line_type}{a character string indicating that the line is vertical
+\code{"v"}, horizontal \code{"h"} or free (\code{"f"}, the default).}
 }
 \value{
 A list of class \code{rule_points} containing the following elements:
@@ -44,6 +43,14 @@ This function calls \code{graphics::locator} allowing to select two
   first point to the second. Note that this is done after \code{locator()}
   returns, so the plot will show the line joining the original points, not
   the corrected ones. Use \code{plot_rule()} to see corrected line.
+}
+\examples{
+\dontrun{
+plot_rgb_plane("r", "g")
+line01 <- place_rule("r", "g")          # A "free" line
+line02 <- place_rule("r", "g", "h")     # A horizontal line
+}
+
 }
 \seealso{
 \code{\link[graphics]{locator}}, \code{\link{define_rule}},

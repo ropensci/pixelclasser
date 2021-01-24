@@ -45,7 +45,7 @@ plot_rgb_plane("g", "b")
 plot_rule(rule_01, col = "green")
 
 # And the label is added in three different positions by passing col and adj
-to the underlying function
+# to the underlying function
 label_rule(rule_01, label = expression('R'[1]*''), shift = c(0,0),
            col = 'black', adj = 1.5)
 label_rule(rule_01, label = expression('R'[1]*''), shift = c(0.2, -0.4),

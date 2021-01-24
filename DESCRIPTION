@@ -18,7 +18,8 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown,
-    testthat
+    testthat,
+    covr
 VignetteBuilder: knitr
 URL: https://github.com/CarlosRealR/pixelclasser
 BugReports: https://github.com/CarlosRealR/pixelclasser

@@ -7,7 +7,7 @@
 plot_pixels(image_rgb, x_axis, y_axis, ...)
 }
 \arguments{
-\item{image_rgb}{an object produced by \code{transform_colours()}.}
+\item{image_rgb}{an object produced by \code{read_image()}.}
 
 \item{x_axis}{a character string indicating which colour variable use as x.}
 
@@ -47,7 +47,7 @@ It is advantageous to specify a colour such as \code{"#00000005"}
 ivy_oak_rgb <- read_image(system.file("extdata", "IvyOak400x300.JPG",
                                        package = "pixelclasser"))
 plot_rgb_plane("g", "b")
-plot_pixels(ivy_oak_rgb, "g", "b", "#00000005")
+plot_pixels(ivy_oak_rgb, "g", "b", col = "#00000005")
 
 }
 \seealso{

@@ -16,8 +16,8 @@
 #'   "jpeg", "JPEG", "tif", "TIF", "tiff", "TIFF")}.
 #'
 #'   Note that the default value for jpg quality is 0.7. For maximal quality set
-#'   \code{quality = 1} using the \dots argument. Such adjustments are not needed
-#'   with \code{tiff} files, as this is a lossless format.
+#'   \code{quality = 1} using the \dots argument. Such adjustments are not
+#'   needed with \code{tiff} files, as this is a lossless format.
 #'
 #' @seealso \code{\link{classify_pixels}}
 #'

@@ -3,6 +3,17 @@ library(pixelclasser)
 
 source(system.file("extdata", "TestObjects.R", package = "pixelclasser"))
 
+# Function place_rule() --------------------------------------------------------
+
+test_that("Parameters in place() are verified", {
+  
+  expect_error(place_rule(), "X or Y colour variable missing")
+  expect_error(place_rule("g"), "X or Y colour variable missing")
+  expect_error(place_rule("r", "v"), 'Colour variables must be "r", "g" or "b"')
+  expect_error(place_rule("r", "g", "g"), 
+               'line_type must be one of "v", "h" or "f"')
+})
+
 # Function read_image() --------------------------------------------------------
 
 test_that("Parameters in read_image() are verified", {
@@ -99,19 +110,20 @@ test_that("Parameters in define_cat() are verified", {
 
 test_that("Output of define_cat() is correct", {
 
-  #load(system.file("extdata", "test_cat.R", package = "pixelclasser"))
-
   new_cat_A <- define_cat('Cat_A', 'red', rule05, rule04)
-
   expect_equal(class(new_cat_A), "pixel_cat")
   expect_equal(new_cat_A, cat_A)
+  
+  new_cat_D <- define_cat("Cat_D", "green", subcat01, subcat02)
+  expect_equal(class(subcat01), "pixel_subcat")
+  expect_equal(class(subcat02), "pixel_subcat")
+  expect_equal(class(new_cat_D), "pixel_cat")
+  expect_equal(new_cat_D, cat_D)
 })
 
 # Function classify_pixels() ---------------------------------------------------
 
 test_that("Parameters in classify_pixels() are verified", {
-
-  #load(system.file("extdata", "test_cat.R", package = "pixelclasser"))
 
   expect_error(test_image_classif <- classify_pixels(test_image_rgb,
                                                      list('A', 'B'),
@@ -137,9 +149,10 @@ test_that("Output of classify_pixels() is correct", {
 
 test_that("Parameters in plot_rule() are verified", {
 
-  plot_rgb_plane('r', 'g')
+  #plot_rgb_plane('r', 'g')
 
-  expect_error(plot_rule(rule = subcat01))
+  expect_error(plot_rule(rule = subcat01),
+               "The object to plot must be of class 'pixel_rule'")
 })
 
 # Function label_rule() --------------------------------------------------------

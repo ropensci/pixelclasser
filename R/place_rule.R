@@ -7,9 +7,8 @@
 #'   corresponds to the x axis, one of \code{"r"}, \code{"g"} or \code{"b"}.
 #' @param y_axis a character string indicating the colour variable that
 #'   corresponds to the y axis, one of \code{"r"}, \code{"g"} or \code{"b"}.
-#' @param line_type a character string indicating that the line is
-#'   \code{"vertical"}, \code{"horizontal"} or otherwise (\code{"free"}, the
-#'   default).
+#' @param line_type a character string indicating that the line is vertical
+#'   \code{"v"}, horizontal \code{"h"} or free (\code{"f"}, the default).
 #'
 #' @return A list of class \code{rule_points} containing the following elements:
 #' \itemize{
@@ -38,18 +37,25 @@
 #' \dontrun{
 #' plot_rgb_plane("r", "g")
 #' line01 <- place_rule("r", "g")          # A "free" line
-#' line02 <- place_rule("r", "g", "h")     # A horizontal line}
+#' line02 <- place_rule("r", "g", "h")     # A horizontal line
 #' }
 #' 
 #' @export
 
-place_rule <- function(x_axis, y_axis, line_type = 'free'){
+place_rule <- function(x_axis, y_axis, line_type = 'f'){
 
   # Parameter tests ------------------------------------------------------------
   # Standard parameter error is thrown after the selecting the line points, so
   # this test is needed to stop the function early.
   if (missing(x_axis) | missing(y_axis)){
-    stop('X or Y colour variable missing', call. = F)
+    stop('X or Y colour variable missing', call. = FALSE)
+  } else {
+    if (sum((c(x_axis, y_axis) %in% c("r", "g", "b"))) != 2){
+      stop('Colour variables must be "r", "g" or "b"', call. = FALSE)
+    }
+    if (!(line_type %in% c("h", "v", "f"))){
+      stop('line_type must be one of "v", "h" or "f"', call. = FALSE)
+    }
   }
   
   # Main code ------------------------------------------------------------------
@@ -65,14 +71,14 @@ place_rule <- function(x_axis, y_axis, line_type = 'free'){
   result$second_point <- c(coordinates$x[2], coordinates$y[2])
   names(result$first_point) <- c("x", "y")
   names(result$second_point) <- c("x", "y")
-  result$x_axis = x_axis
-  result$y_axis = y_axis
+  result$x_axis <- x_axis
+  result$y_axis <- y_axis
   
-  if (startsWith("vertical", line_type)){
+  if (line_type == "v"){
     result$second_point["x"] <- result$first_point["x"]
   }
   
-  if (startsWith("horizontal", line_type)){
+  if (line_type == "h"){
     result$second_point["y"] <- result$first_point["y"]
   }
   

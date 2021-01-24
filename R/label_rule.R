@@ -15,8 +15,8 @@
 #'
 #' @details The function uses the information stored in the pixel_rule object to
 #'   plot the label at the start of the line. The \code{shift} values, expressed
-#'   in plot coordinates, are added to the coordinates of that point to place the label
-#'   elsewhere. Note that \dots can be used to pass values for the 
+#'   in plot coordinates, are added to the coordinates of that point to place
+#'   the label elsewhere. Note that \dots can be used to pass values for the
 #'   \code{adj} parameter to the underlying \code{graphics::text()} function,
 #'   which also modifies the position of the label.
 #'   
@@ -35,7 +35,7 @@
 #' plot_rule(rule_01, col = "green")
 #' 
 #' # And the label is added in three different positions by passing col and adj
-#' to the underlying function
+#' # to the underlying function
 #' label_rule(rule_01, label = expression('R'[1]*''), shift = c(0,0),
 #'            col = 'black', adj = 1.5)
 #' label_rule(rule_01, label = expression('R'[1]*''), shift = c(0.2, -0.4),
