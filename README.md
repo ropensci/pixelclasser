@@ -1,13 +1,12 @@
-pixelclasser
-============
+# pixelclasser
 
 <!-- badges: start -->
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-
-[![](https://badges.ropensci.org/406_status.svg)](https://github.com/ropensci/software-review/issues/406)
+[![Codecov test
+coverage](https://codecov.io/gh/CarlosRealR/pixelclasser/branch/master/graph/badge.svg)](https://codecov.io/gh/CarlosRealR/pixelclasser?branch=master)
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
@@ -17,15 +16,15 @@ Machine, adapted to this particular use.
 
 The procedure is simple. A digital image in JPEG or TIFF format is
 imported into R. The original image contains three colour variables (or
-bands): *R*, *G*, and *B*. The first step is to transform them into
-proportions (*r*, *g* and *b*), which simplifies the problem into a
-bivariate one. The pixels of the test images can then be represented in
-the plane defined by two of the variables (the user judges which two are
-more convenient by trial and error) and, hopefully, they would form
-separate clusters (pixel categories). The user then traces straight
-lines (classification rules) that enclose the pixel clusters. Using the
-mathematical expression for these rules and the values of the
-transformed variables, each pixel can be tested for belonging in each
+bands): \(R\), \(G\), and \(B\). The first step is to transform them
+into proportions (\(r\), \(g\) and \(b\)), which simplifies the problem
+into a bivariate one. The pixels of the test images can then be
+represented in the plane defined by two of the variables (the user
+judges which two are more convenient by trial and error) and, hopefully,
+they would form separate clusters (pixel categories). The user then
+traces straight lines (classification rules) that enclose the pixel
+clusters. Using the mathematical expression for these rules and the
+values of the transformed variables, each pixel can be classified in one
 category. This produces a set of logical matrices (incidence matrices)
 indicating which pixels belong to each category, stored in appropriate R
 objects. These can be submitted to posterior analysis or used to create
@@ -37,8 +36,7 @@ in objects that can be passed to function `classify_pixels()` for the
 analysis of the image, and functions to import and export the original
 and the classified images.
 
-Installation
-------------
+## Installation
 
 You can install the development version from GitHub using `remotes` or
 `devtools`
@@ -48,11 +46,12 @@ remotes::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
 devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
 ```
 
-Using pixelclasser
-------------------
+## Using pixelclasser
 
-The workflow and how to use the functions is explained in the vignette
-included in the package:
+The manual with the description of each function and use examples can is
+the file `/doc/pixelclasser_0.8.0.pdf`.
+
+An example session is described in the vignette included in the package:
 
 ``` r
 vignette("pixelclasser")
@@ -68,24 +67,24 @@ gardens. The small images are representative of each category.
 
 This image shows the pixels of the original image (black) and, overlaid,
 those of the small images: dead (brown), ivy (blue) and oak leaves
-(green). They were plotted using the values of the *g* and *r* colour
-variables (the example was an RGB digital image).
+(green). They were plotted using the values of the \(g\) and \(r\)
+colour variables (the example was an RGB digital image).
 
 <img src="./inst/extdata/ReadMeFig01.png" width="50%" style="display: block; margin: auto;" />
 
 The user defines straight lines that serve as borders of the area
-occupied by each pixel category. The figure shows line *L*<sub>1</sub>
-which separate the dead leaf pixels from the others, and lines
-*L*<sub>2</sub> and *L*<sub>3</sub> which separate the ivy from the oak
-pixels. Each line defines two rules (pixels above or underneath the
-line). They were defined using the oak pixels but note that ivy pixels
-trespass into the oak area, so they were not totally separable.
+occupied by each pixel category. The figure shows line \(L_{1}\) which
+separate the dead leaf pixels from the others, and lines \(L_{2}\) and
+\(L_{3}\) which separate the ivy from the oak pixels. Each line defines
+two rules (pixels above or underneath the line). They were defined using
+the oak pixels but note that ivy pixels trespass into the oak area, so
+they were not totally separable.
 
 <img src="./inst/extdata/ReadMeFig02.png" width="50%" style="display: block; margin: auto;" />
 
 Using the mathematical expressions of the rules, the pixels were
 classified as belonging or not to each category and classified images
 produced. Below are the original image, the image classified using
-$L\_{1}$ alone (dead/fresh leaves) and the full classified image.
+$L\_{1} alone (dead/fresh leaves) and the full classified image.
 
 <img src="./inst/extdata/ClassifResults.png" width="100%" style="display: block; margin: auto;" />

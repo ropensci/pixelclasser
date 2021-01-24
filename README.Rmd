@@ -1,10 +1,10 @@
 ---
 title: pixelclasser
 author: Carlos Real
-date: November 4, 2020
+date: January 24, 2021
 output:
   md_document:
-    variant: markdown_github
+    variant: gfm
 ---
 
 ```{r, include = FALSE}
@@ -40,7 +40,10 @@ devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
 
 ## Using pixelclasser
 
-The workflow and how to use the functions is explained in the vignette included in the package:
+The manual with the description of each function and use examples can is the
+file `/doc/pixelclasser_0.8.0.pdf`.
+
+An example session is described in the vignette included in the package:
 
 ```{r eval=FALSE}
 vignette("pixelclasser")
