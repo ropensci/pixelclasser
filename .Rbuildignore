@@ -2,7 +2,11 @@
 ^\.Rproj\.user$
 LICENSE.txt
 README.Rmd
+CONTRIBUTING.md
 ^codemeta\.json$
 ^doc$
 ^Meta$
 ^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
