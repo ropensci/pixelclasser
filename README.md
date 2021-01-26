@@ -6,7 +6,7 @@
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Codecov test
-coverage](https://codecov.io/gh/CarlosRealR/pixelclasser/branch/master/graph/badge.svg)](https://codecov.io/gh/CarlosRealR/pixelclasser?branch=master)
+coverage](https://codecov.io/gh/ropensci/pixelclasser/branch/master/graph/badge.svg)](https://codecov.io/gh/ropensci/pixelclasser?branch=master)
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
@@ -42,8 +42,8 @@ You can install the development version from GitHub using `remotes` or
 `devtools`
 
 ``` r
-remotes::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
-devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
+remotes::install_github("ropensci/pixelclasser", build_vignettes = TRUE)
+devtools::install_github("ropensci/pixelclasser", build_vignettes = TRUE)
 ```
 
 ## Using pixelclasser
