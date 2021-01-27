@@ -76,7 +76,6 @@
 <a href="#pixelclasser" class="anchor"></a>pixelclasser</h1></div>
 <!-- badges: start -->
 
-<!-- badges: end -->
 <p>This package contains a set of tools to classify the pixels of digital images into colour categories arbitrarily defined by the user. It is a simple version of the multivariate technique known as Support Vector Machine, adapted to this particular use.</p>
 <p>The procedure is simple. A digital image in JPEG or TIFF format is imported into R. The original image contains three colour variables (or bands): <span class="math inline"><em>R</em></span>, <span class="math inline"><em>G</em></span>, and <span class="math inline"><em>B</em></span>. The first step is to transform them into proportions (<span class="math inline"><em>r</em></span>, <span class="math inline"><em>g</em></span> and <span class="math inline"><em>b</em></span>), which simplifies the problem into a bivariate one. The pixels of the test images can then be represented in the plane defined by two of the variables (the user judges which two are more convenient by trial and error) and, hopefully, they would form separate clusters (pixel categories). The user then traces straight lines (classification rules) that enclose the pixel clusters. Using the mathematical expression for these rules and the values of the transformed variables, each pixel can be classified in one category. This produces a set of logical matrices (incidence matrices) indicating which pixels belong to each category, stored in appropriate R objects. These can be submitted to posterior analysis or used to create a new version of the original image showing the category of each pixel.</p>
 <p><code>pixelclasser</code> contains functions to visualize the pixels of the images and the rules created by the user, to create the rules and to store them in objects that can be passed to function <code><a href="reference/classify_pixels.html">classify_pixels()</a></code> for the analysis of the image, and functions to import and export the original and the classified images.</p>
@@ -126,6 +125,7 @@
 <h2>Developers</h2>
 <ul class="list-unstyled">
 <li>Carlos Real <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-5433-6728" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 </div>
 

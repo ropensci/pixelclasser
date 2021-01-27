@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>pixelclasser: Functions to classify pixels by colour — pixelclasser • pixelclasser</title>
+<title>Transforms RGB values into proportions (rgb values) — transform_colours • pixelclasser</title>
 
 
 <!-- jquery -->
@@ -39,16 +39,9 @@
 
 
 
-<meta property="og:title" content="pixelclasser: Functions to classify pixels by colour — pixelclasser" />
-<meta property="og:description" content="pixelclasser contains functions to classify the pixels of an image
-file (in format jpeg or tiff) by its colour. It uses a simple form of the
-technique known as Support Vector Machine, adapted to this particular
-problem. The original colour variables (R, G, B) are transformed into
-colour proportions (r, g, b), and the resulting two dimensional plane,
-defined by any convenient pair of the transformed variables is divided in
-several subsets (categories) by one or more straight lines (rules) selected
-by the user. Finally, the pixels belonging to each category are identified
-using the rules, and a classified image can be created and saved." />
+<meta property="og:title" content="Transforms RGB values into proportions (rgb values) — transform_colours" />
+<meta property="og:description" content="This function transforms an array of RGB absolute values into a similar array
+containing the proportion of each band (= colour variable): r g and b." />
 
 
 
@@ -119,49 +112,38 @@ using the rules, and a classified image can be created and saved." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>pixelclasser: Functions to classify pixels by colour</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ropensci/pixelclasser/blob/master/R/pixelclasser-package.R'><code>R/pixelclasser-package.R</code></a></small>
-    <div class="hidden name"><code>pixelclasser.Rd</code></div>
+    <h1>Transforms RGB values into proportions (rgb values)</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ropensci/pixelclasser/blob/master/R/transform_colours.R'><code>R/transform_colours.R</code></a></small>
+    <div class="hidden name"><code>transform_colours.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>pixelclasser</code> contains functions to classify the pixels of an image
-file (in format jpeg or tiff) by its colour. It uses a simple form of the
-technique known as Support Vector Machine, adapted to this particular
-problem. The original colour variables (<code>R, G, B</code>) are transformed into
-colour proportions (<code>r, g, b</code>), and the resulting two dimensional plane,
-defined by any convenient pair of the transformed variables is divided in
-several subsets (categories) by one or more straight lines (rules) selected
-by the user. Finally, the pixels belonging to each category are identified
-using the rules, and a classified image can be created and saved.</p>
+    <p>This function transforms an array of RGB absolute values into a similar array
+containing the proportion of each band (= colour variable): r g and b.</p>
     </div>
 
+    <pre class="usage"><span class='fu'>transform_colours</span><span class='op'>(</span><span class='va'>image_array</span><span class='op'>)</span></pre>
 
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>image_array</th>
+      <td><p>an array of class <code>image_array</code> created by function
+<code><a href='read_image.html'>read_image()</a></code>.</p></td>
+    </tr>
+    </table>
 
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>Returns an array of class <code>transformed_image</code> containing the
+  proportions of each colour variable in the pixels of the image. The third
+  dimension of the array is named "bands" and its elements are labelled as
+  "r", "g" and "b", respectively.</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>To classify the pixels of an image, a series of steps must be done
-in the following order, using the functions shown in parenthesis:</p><ul>
-<li><p>import the image into an R array of transformed (<code>rgb</code>) data
-(<code><a href='read_image.html'>read_image()</a></code>).</p></li>
-<li><p>plot the pixels of the image on the plane of two transformed variables
-that shows the categories of pixels most clearly (<code><a href='plot_rgb_plane.html'>plot_rgb_plane()</a></code>,
-<code>plot_pixels</code>).</p></li>
-<li><p>trace lines between the pixel clusters and use them to create
-classification rules (<code><a href='place_rule.html'>place_rule()</a></code>, <code>define_rule</code>,
-<code><a href='plot_rule.html'>plot_rule()</a></code>).</p></li>
-<li><p>combine the rules to define categories. Sometimes the rules are
-combined into subcategories and these into categories (<code><a href='define_cat.html'>define_cat()</a></code>, 
-<code><a href='define_subcat.html'>define_subcat()</a></code>).</p></li>
-<li><p>use the categories to classify the pixels (<code><a href='classify_pixels.html'>classify_pixels()</a></code>).</p></li>
-<li><p>save the results of the classification as an image, if needed
-(<code>save_clasif_image()</code>).</p></li>
-</ul>
-
-<p>These steps are explained in depth in the vignette included in the package.</p>
-    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
-
-    <p>Carlos Real (carlos.real@usc.es)</p>
+    <p>The proportions are calculated as <code>r</code> = <code>R</code> / (<code>R + G
+  + B</code>), and so on. It is used by function read_image().</p>
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
