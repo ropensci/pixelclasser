@@ -14,7 +14,7 @@
 #' @details The proportions are calculated as \code{r} = \code{R} / (\code{R + G
 #'   + B}), and so on. It is used by function read_image().
 #'
-#' @noRd
+#' @keywords internal
 
 transform_colours <- function(image_array){
 

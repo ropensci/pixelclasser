@@ -35,5 +35,6 @@
 #'
 #' @docType package
 #' @name pixelclasser
+#' @import jpeg tiff
 #'
 NULL

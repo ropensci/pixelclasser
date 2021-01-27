@@ -4,7 +4,8 @@
 
 If you are reading this document, you have probably been using pixelclasser in your work, so it is a pleasure to receive your comments, suggestions and bug reports. 
 
-[repo]: https://github.com/our_org/ropensci/pixelclasser
+
+[repo]: https://github.com/ropensci/pixelclasser
 [email]: mailto:carlos.real@usc.es
 
 ## How you can contribute

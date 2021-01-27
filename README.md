@@ -1,11 +1,9 @@
 # pixelclasser
 
 <!-- badges: start -->
-
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
