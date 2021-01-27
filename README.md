@@ -5,8 +5,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Codecov test
-coverage](https://codecov.io/gh/CarlosRealR/pixelclasser/branch/master/graph/badge.svg)](https://codecov.io/gh/CarlosRealR/pixelclasser?branch=master)
+
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
@@ -42,49 +41,23 @@ You can install the development version from GitHub using `remotes` or
 `devtools`
 
 ``` r
-remotes::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
-devtools::install_github("CarlosRealR/pixelclasser", build_vignettes = TRUE)
+remotes::install_github("ropensci/pixelclasser", build_vignettes = TRUE)
+devtools::install_github("ropensci/pixelclasser", build_vignettes = TRUE)
 ```
 
 ## Using pixelclasser
 
-The manual with the description of each function and use examples can is
-the file `/doc/pixelclasser_0.8.0.pdf`.
+The manual with the description of each function and use examples is the
+file `/doc/pixelclasser_1.0.0.pdf` (see the link to source code on the
+right), but its contents can be found in the Reference section of this
+website.
 
-An example session is described in the vignette included in the package:
+An example session is described in the vignette included in the package,
+which can be accessed after installation in the usual way:
 
 ``` r
 vignette("pixelclasser")
 ```
 
-The vignette explains how to use the code and illustrates the procedure
-outlined above using a set of images included as package data. This is a
-summary of the vignette contents. The following image is the example
-used in the vignette: dead, ivy and oak leaves on the soil in the campus
-gardens. The small images are representative of each category.
-
-<img src="./inst/extdata/ExampleImages.png" width="50%" style="display: block; margin: auto;" />
-
-This image shows the pixels of the original image (black) and, overlaid,
-those of the small images: dead (brown), ivy (blue) and oak leaves
-(green). They were plotted using the values of the \(g\) and \(r\)
-colour variables (the example was an RGB digital image).
-
-<img src="./inst/extdata/ReadMeFig01.png" width="50%" style="display: block; margin: auto;" />
-
-The user defines straight lines that serve as borders of the area
-occupied by each pixel category. The figure shows line \(L_{1}\) which
-separate the dead leaf pixels from the others, and lines \(L_{2}\) and
-\(L_{3}\) which separate the ivy from the oak pixels. Each line defines
-two rules (pixels above or underneath the line). They were defined using
-the oak pixels but note that ivy pixels trespass into the oak area, so
-they were not totally separable.
-
-<img src="./inst/extdata/ReadMeFig02.png" width="50%" style="display: block; margin: auto;" />
-
-Using the mathematical expressions of the rules, the pixels were
-classified as belonging or not to each category and classified images
-produced. Below are the original image, the image classified using
-$L\_{1} alone (dead/fresh leaves) and the full classified image.
-
-<img src="./inst/extdata/ClassifResults.png" width="100%" style="display: block; margin: auto;" />
+It also can be accessed in the section Get started in the top menu of
+this page.
