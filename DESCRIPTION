@@ -1,6 +1,6 @@
 Package: pixelclasser
 Type: Package
-Title: A Package for Classifying Pixels by Colour
+Title: Classifies Image Pixels by Colour
 Version: 1.0.0
 Authors@R: c(person("Carlos", "Real", email = "carlos.real@usc.es",  role = c("aut", "cre"), comment = c(ORCID = "0000-0002-5433-6728")),
              person("Quentin", "Read", role = "rev"))

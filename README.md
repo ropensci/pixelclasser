@@ -1,6 +1,7 @@
 # pixelclasser
 
 <!-- badges: start -->
+
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -35,8 +36,8 @@ and the classified images.
 
 ## Installation
 
-You can install the development version from GitHub using `remotes` or
-`devtools`
+You can install the last version from the rOpenSci repository in GitHub
+using packages `remotes` or `devtools`, which install `remotes`
 
 ``` r
 remotes::install_github("ropensci/pixelclasser", build_vignettes = TRUE)
@@ -59,3 +60,9 @@ vignette("pixelclasser")
 
 It also can be accessed in the section Get started in the top menu of
 this page.
+
+# Code of conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
