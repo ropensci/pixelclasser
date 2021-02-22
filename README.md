@@ -5,6 +5,8 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+![rOpenSci
+peer-review](https://badges.ropensci.org/406_status.svg)\](<https://github.com/ropensci/software-review/issues/406>)
 <!-- badges: end -->
 
 This package contains a set of tools to classify the pixels of digital
